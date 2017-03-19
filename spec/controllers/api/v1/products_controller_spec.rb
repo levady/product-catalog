@@ -119,4 +119,14 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    let(:product) { create(:product) }
+
+    it "delete the product" do
+      delete :destroy, id: product.id, format: :json
+      expect(response).to have_http_status(:success)
+      expect(Product.find_by(id: product.id)).to be_nil
+    end
+  end
 end
