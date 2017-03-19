@@ -12,8 +12,7 @@ gem 'pg'
 # FRONT-END
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem "ember-cli-rails"
 
 # DOCUMENTATION
 gem 'sdoc', '~> 0.4.0', group: :doc
