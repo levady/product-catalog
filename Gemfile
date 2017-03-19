@@ -41,3 +41,5 @@ group :test do
   gem 'capybara'
   gem 'capybara-mechanize'
 end
+
+gem 'rails_12factor', group: [:staging, :production]
