@@ -2,7 +2,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   before_action :load_product, only: %i(show update destroy)
 
   def index
-    respond_with Product.all
+    respond_with Product.order(id: :desc)
   end
 
   def show

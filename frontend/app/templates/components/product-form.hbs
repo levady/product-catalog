@@ -4,12 +4,12 @@
     {{input value=product.name class="form-control" placeholder="Name"}}
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
-    {{input value=product.description class="form-control" placeholder="Description"}}
+    <label for="description">Price</label>
+    {{input value=product.price class="form-control" placeholder="Price" type="number" step="any" min="0"}}
   </div>
   <div class="form-group">
-    <label for="description">Price</label>
-    {{input value=product.price class="form-control" placeholder="Description" type="number" step="any" min="0"}}
+    <label for="description">Description</label>
+    {{input value=product.description class="form-control" placeholder="Description"}}
   </div>
   <button type="submit" class="btn btn-default" {{action "goToProducts"}}>Cancel</button>
   <button type="submit" class="btn btn-primary">Submit</button>
