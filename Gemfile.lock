@@ -83,6 +83,10 @@ GEM
       railties (>= 3.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    heroku_rails_deflate (1.0.3)
+      actionpack (>= 3.2.13)
+      activesupport (>= 3.2.13)
+      rack (>= 1.4.5)
     html_page (0.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -130,6 +134,7 @@ GEM
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.4.2)
     rails (4.2.8)
       actionmailer (= 4.2.8)
       actionpack (= 4.2.8)
@@ -239,9 +244,11 @@ DEPENDENCIES
   capybara-mechanize
   ember-cli-rails
   factory_girl_rails
+  heroku_rails_deflate
   jquery-rails
   oj
   pg
+  rack-timeout
   rails (= 4.2.8)
   rails_12factor
   responders (~> 2.0)

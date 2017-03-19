@@ -12,7 +12,6 @@ gem 'pg'
 # FRONT-END
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
-gem 'uglifier', '>= 1.3.0'
 gem "ember-cli-rails"
 
 # DOCUMENTATION
@@ -42,4 +41,9 @@ group :test do
   gem 'capybara-mechanize'
 end
 
-gem 'rails_12factor', group: [:staging, :production]
+group :production do
+  gem 'rails_12factor'
+  gem 'heroku_rails_deflate'
+  gem 'rack-timeout'
+  gem 'uglifier', '>= 1.3.0'
+end
