@@ -93,4 +93,30 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
   end
+
+  describe "PUT #update" do
+    let(:product) { create(:product, name: 'Product 1', description: 'Lame', price: 5.0) }
+
+    context "given valid params" do
+      let(:params)  { { name: 'Product 1 updated', description: 'Not lame', price: 10.5 } }
+
+      it "update product" do
+        put :update, id: product.id, product: params, format: :json
+        expect(response).to have_http_status(:success)
+        expect(product.reload.name).to eq('Product 1 updated')
+        expect(product.description).to eq('Not lame')
+        expect(product.price).to eq(10.5)
+      end
+    end
+
+    context "validation errors" do
+      let(:params)  { { name: nil, description: 'Not lame', price: 10.5 } }
+
+      it "update the product" do
+        put :update, id: product.id, product: params, format: :json
+        expect(response.status).to eq(422)
+        expect(response.body).to eq('Validation failed: Name can\'t be blank')
+      end
+    end
+  end
 end
