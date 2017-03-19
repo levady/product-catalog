@@ -1,0 +1,6 @@
+<%= render_ember_app :frontend do |head| %>
+  <% head.append do %>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+  <% end %>
+<% end %>
