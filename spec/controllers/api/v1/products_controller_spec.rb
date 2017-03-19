@@ -34,4 +34,63 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
   end
+
+  describe "POST #create" do
+    context "given valid params" do
+      let(:params) do
+        {
+          name: 'Product 1',
+          description: 'Such an awesome product!',
+          price: 5.5
+        }
+      end
+
+      it 'creates a product' do
+        post :create, product: params, format: :json
+        expect(response.status).to eq(201)
+        json = JSON.parse(response.body)
+        expect(json['name']).to eq('Product 1')
+        expect(json['description']).to eq('Such an awesome product!')
+        expect(json['price']).to eq("5.5")
+      end
+    end
+
+    context "given unallowed params" do
+      let(:params) do
+        {
+          name: 'Product 1',
+          description: 'Such an awesome product!',
+          price: 5.5,
+          unallowed_attribute: "You shall not pass!"
+        }
+      end
+
+      it 'creates a product' do
+        post :create, product: params, format: :json
+        expect(response.status).to eq(201)
+        json = JSON.parse(response.body)
+        expect(json['name']).to eq('Product 1')
+        expect(json['description']).to eq('Such an awesome product!')
+        expect(json['price']).to eq("5.5")
+      end
+    end
+
+    context "validation errors" do
+      before { create(:product, name: 'Duplicate me') }
+
+      let(:params) do
+        {
+          name: 'Duplicate me',
+          description: 'Such an awesome product!',
+          price: 5.5
+        }
+      end
+
+      it "returns unprocessable_entity and error message" do
+        post :create, product: params, format: :json
+        expect(response.status).to eq(422)
+        expect(response.body).to eq('Validation failed: Name has already been taken')
+      end
+    end
+  end
 end
