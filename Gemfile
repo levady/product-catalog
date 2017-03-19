@@ -4,6 +4,7 @@ ruby '2.3.3'
 # BASE
 gem 'rails', '4.2.8'
 gem 'unicorn'
+gem 'responders', '~> 2.0'
 
 # STORAGE
 gem 'pg'
@@ -18,6 +19,7 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # SERIALIZERS
+gem 'active_model_serializers', '~> 0.10.3'
 gem 'oj'
 
 group :development, :test do
