@@ -9,8 +9,8 @@ export default Ember.Component.extend({
         this.send('goToProducts');
       },
 
-      (jqXHR) => {
-        // TODO: fix the error response format from backend.
+      (error) => {
+        // TODO: ActiveModel::Serializer JSON API adapter error response is not compatible with ember-data??
       });
     },
 

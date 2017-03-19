@@ -9,7 +9,7 @@ export default Ember.Component.extend({
         },
 
         (error) => {
-          // TODO: handle error
+          // TODO: ActiveModel::Serializer JSON API adapter error response is not compatible with ember-data??
         });
       }
     },
