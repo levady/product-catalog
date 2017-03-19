@@ -9,7 +9,10 @@
     <div class="col-md-3">{{product.name}}</div>
     <div class="col-md-3">{{product.description}}</div>
     <div class="col-md-3">{{product.price}}</div>
-    <div class="col-md-3">Edit | Delete</div>
+    <div class="col-md-3">
+      {{#link-to "products.edit" product.id}}Edit{{/link-to}}
+      | Delete
+    </div>
   </div>
 {{/each}}
 <br />
