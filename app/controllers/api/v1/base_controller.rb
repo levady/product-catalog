@@ -3,6 +3,9 @@ class Api::V1::BaseController < ActionController::Base
   respond_to :json
 
   rescue_from ActiveRecord::RecordInvalid do |exception|
-    render text: exception.message, status: :unprocessable_entity
+    render json:       exception.record,
+           status:     :unprocessable_entity,
+           adapter:    :json_api,
+           serializer: ActiveModel::Serializer::ErrorSerializer
   end
 end

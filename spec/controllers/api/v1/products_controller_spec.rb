@@ -95,7 +95,9 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       it "returns unprocessable_entity and error message" do
         post :create, data: data, format: :json
         expect(response.status).to eq(422)
-        expect(response.body).to eq('Validation failed: Name has already been taken')
+        json = JSON.parse(response.body)['errors'].first
+        expect(json.dig('source', 'pointer')).to eq('/data/attributes/name')
+        expect(json['detail']).to eq('has already been taken')
       end
     end
   end
@@ -129,7 +131,9 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       it "update the product" do
         put :update, id: product.id, data: data, format: :json
         expect(response.status).to eq(422)
-        expect(response.body).to eq('Validation failed: Name can\'t be blank')
+        json = JSON.parse(response.body)['errors'].first
+        expect(json.dig('source', 'pointer')).to eq('/data/attributes/name')
+        expect(json['detail']).to eq('can\'t be blank')
       end
     end
   end
