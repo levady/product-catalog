@@ -15,6 +15,12 @@ export default Ember.Component.extend({
     },
 
     goToProducts() {
+      if (this.get('product.isNew')) {
+        this.get('product').deleteRecord();
+      } else {
+        this.get('product').rollbackAttributes();
+      }
+
       this.get('controller').transitionToRoute('products');
     },
   },
