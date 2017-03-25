@@ -1,3 +1,12 @@
+<div class="alert alert-danger" role="alert" hidden={{hideErrors}}>
+  Uh oh! {{pluralize errors.length 'error'}} prohibited this product from being saved:
+  <ul>
+    {{#each errors as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  </ul>
+</div>
+
 <form {{action "saveProduct" on="submit"}}>
   <div class="form-group">
     <label for="name">Name</label>
