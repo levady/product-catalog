@@ -15,8 +15,10 @@
         <td>{{product.displayPrice}}</td>
         <td>
           <div class="row">
-            <div class="col-xs-2">{{#link-to "products.edit" product.id}}Edit{{/link-to}}</div>
-            <div class="col-xs-2" style="bottom: 7px; right: 10px;">{{delete-product product=product controller=this}}</div>
+            <div class="col-xs-3">
+              {{#link-to "products.edit" product.id tagName='button' class='btn btn-success'}}Edit{{/link-to}}
+            </div>
+            <div class="col-xs-2">{{delete-product product=product controller=this}}</div>
           </div>
         </td>
       </tr>
