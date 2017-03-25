@@ -1,13 +1,25 @@
-{{#each sortedProducts as |product|}}
-  <div class="row">
-    <div class="col-md-3">{{product.name}}</div>
-    <div class="col-md-3">{{product.description}}</div>
-    <div class="col-md-3">{{product.displayPrice}}</div>
-    <div class="col-md-3">
-      <div class="row">
-        <div class="col-xs-2">{{#link-to "products.edit" product.id}}Edit{{/link-to}}</div>
-        <div class="col-xs-2" style="bottom: 7px; right: 10px;">{{delete-product product=product controller=this}}</div>
-      </div>
-    </div>
-  </div>
-{{/each}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedProducts as |product|}}
+      <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.displayPrice}}</td>
+        <td>
+          <div class="row">
+            <div class="col-xs-2">{{#link-to "products.edit" product.id}}Edit{{/link-to}}</div>
+            <div class="col-xs-2" style="bottom: 7px; right: 10px;">{{delete-product product=product controller=this}}</div>
+          </div>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
