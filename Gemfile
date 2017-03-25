@@ -5,6 +5,7 @@ ruby '2.3.3'
 gem 'rails', '4.2.8'
 gem 'unicorn'
 gem 'responders', '~> 2.0'
+gem 'kaminari'
 
 # STORAGE
 gem 'pg'
