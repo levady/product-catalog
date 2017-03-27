@@ -1,9 +1,9 @@
-{{sorted-products products=model}}
+{{sorted-products controller=this}}
 <div class="row">
   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
     {{#link-to "products.new" class="btn btn-info"}}Create new product{{/link-to}}
   </div>
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="bottom: 23px;">
-    {{page-numbers content=model currentPage=model.page totalPages=model.meta.total-pages}}
+    {{page-numbers content=model currentPage=page totalPages=totalPages}}
   </div>
 </div>
