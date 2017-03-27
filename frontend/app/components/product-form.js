@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   product:    computed.alias('controller.model'),
   hideErrors: computed.empty('errors'),
   errors: [],
+  redirectParams: {},
 
   _parseErrors(errors) {
     return this.set('errors', errors.map((error) => {
@@ -15,6 +16,11 @@ export default Ember.Component.extend({
   actions: {
     saveProduct() {
       this.set('errors', []);
+
+      if (this.get('product.isNew')) {
+        this.set('redirectParams', { page: 1 });
+      }
+
       this.get('product').save().then(() => {
         this.send('goToProducts');
       },
@@ -31,7 +37,9 @@ export default Ember.Component.extend({
         this.get('product').rollbackAttributes();
       }
 
-      this.get('controller').transitionToRoute('products');
+      this.get('controller').transitionToRoute('products', {
+        queryParams: this.get('redirectParams'),
+      });
     },
   },
 });
