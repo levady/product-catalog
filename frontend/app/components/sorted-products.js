@@ -2,6 +2,7 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Component.extend({
+  products: computed.alias('controller.model'),
   sortedProducts: computed.sort('products', function (a, b) {
     let firstId  = parseInt(a.id);
     let secondId = parseInt(b.id);
